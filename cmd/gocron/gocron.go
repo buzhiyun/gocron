@@ -10,12 +10,12 @@ import (
 
 	macaron "gopkg.in/macaron.v1"
 
-	"github.com/ouqiang/gocron/internal/models"
-	"github.com/ouqiang/gocron/internal/modules/app"
-	"github.com/ouqiang/gocron/internal/modules/logger"
-	"github.com/ouqiang/gocron/internal/modules/setting"
-	"github.com/ouqiang/gocron/internal/routers"
-	"github.com/ouqiang/gocron/internal/service"
+	"github.com/buzhiyun/gocron/internal/models"
+	"github.com/buzhiyun/gocron/internal/modules/app"
+	"github.com/buzhiyun/gocron/internal/modules/logger"
+	"github.com/buzhiyun/gocron/internal/modules/setting"
+	"github.com/buzhiyun/gocron/internal/routers"
+	"github.com/buzhiyun/gocron/internal/service"
 	"github.com/ouqiang/goutil"
 	"github.com/urfave/cli"
 )
@@ -70,6 +70,14 @@ func getCommands() []cli.Command {
 }
 
 func runWeb(ctx *cli.Context) {
+
+	//读取 PORTAL_API
+	models.PORTAL_API = "vfs.7net.cc"
+	env_portal := os.Getenv("PORTAL_API")
+	if len(env_portal) > 0 {
+		models.PORTAL_API = env_portal
+	}
+
 	// 设置运行环境
 	setEnvironment(ctx)
 	// 初始化应用

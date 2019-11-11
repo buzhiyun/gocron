@@ -7,13 +7,13 @@ import (
 
 	macaron "gopkg.in/macaron.v1"
 
+	"github.com/buzhiyun/gocron/internal/modules/app"
+	"github.com/buzhiyun/gocron/internal/modules/logger"
+	"github.com/buzhiyun/gocron/internal/modules/setting"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	_ "github.com/lib/pq"
-	"github.com/ouqiang/gocron/internal/modules/app"
-	"github.com/ouqiang/gocron/internal/modules/logger"
-	"github.com/ouqiang/gocron/internal/modules/setting"
 )
 
 type Status int8

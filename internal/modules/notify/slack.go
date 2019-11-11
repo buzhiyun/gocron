@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ouqiang/gocron/internal/models"
-	"github.com/ouqiang/gocron/internal/modules/httpclient"
-	"github.com/ouqiang/gocron/internal/modules/logger"
-	"github.com/ouqiang/gocron/internal/modules/utils"
+	"github.com/buzhiyun/gocron/internal/models"
+	"github.com/buzhiyun/gocron/internal/modules/httpclient"
+	"github.com/buzhiyun/gocron/internal/modules/logger"
+	"github.com/buzhiyun/gocron/internal/modules/utils"
 )
 
 type Slack struct{}

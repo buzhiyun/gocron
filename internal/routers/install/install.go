@@ -7,14 +7,14 @@ import (
 
 	macaron "gopkg.in/macaron.v1"
 
+	"github.com/buzhiyun/gocron/internal/models"
+	"github.com/buzhiyun/gocron/internal/modules/app"
+	"github.com/buzhiyun/gocron/internal/modules/setting"
+	"github.com/buzhiyun/gocron/internal/modules/utils"
+	"github.com/buzhiyun/gocron/internal/service"
 	"github.com/go-macaron/binding"
 	"github.com/go-sql-driver/mysql"
 	"github.com/lib/pq"
-	"github.com/ouqiang/gocron/internal/models"
-	"github.com/ouqiang/gocron/internal/modules/app"
-	"github.com/ouqiang/gocron/internal/modules/setting"
-	"github.com/ouqiang/gocron/internal/modules/utils"
-	"github.com/ouqiang/gocron/internal/service"
 )
 
 // 系统安装

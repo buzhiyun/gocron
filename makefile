@@ -52,7 +52,7 @@ build-vue:
 
 .PHONY: install-vue
 install-vue:
-	cd web/vue && yarn install
+	cd web/vue &&  yarn config set ignore-engines true  && yarn install
 
 .PHONY: run-vue
 run-vue:

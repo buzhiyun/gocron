@@ -10,14 +10,14 @@ import (
 
 	"github.com/ouqiang/goutil"
 
+	"github.com/buzhiyun/gocron/internal/models"
+	"github.com/buzhiyun/gocron/internal/modules/app"
+	"github.com/buzhiyun/gocron/internal/modules/httpclient"
+	"github.com/buzhiyun/gocron/internal/modules/logger"
+	"github.com/buzhiyun/gocron/internal/modules/notify"
+	rpcClient "github.com/buzhiyun/gocron/internal/modules/rpc/client"
+	pb "github.com/buzhiyun/gocron/internal/modules/rpc/proto"
 	"github.com/jakecoffman/cron"
-	"github.com/ouqiang/gocron/internal/models"
-	"github.com/ouqiang/gocron/internal/modules/app"
-	"github.com/ouqiang/gocron/internal/modules/httpclient"
-	"github.com/ouqiang/gocron/internal/modules/logger"
-	"github.com/ouqiang/gocron/internal/modules/notify"
-	rpcClient "github.com/ouqiang/gocron/internal/modules/rpc/client"
-	pb "github.com/ouqiang/gocron/internal/modules/rpc/proto"
 )
 
 var (
@@ -212,8 +212,8 @@ type Handler interface {
 // HTTP任务
 type HTTPHandler struct{}
 
-// http任务执行时间不超过300秒
-const HttpExecTimeout = 300
+// http任务执行时间不超过1800秒
+const HttpExecTimeout = 1800
 
 func (h *HTTPHandler) Run(taskModel models.Task, taskUniqueId int64) (result string, err error) {
 	if taskModel.Timeout <= 0 || taskModel.Timeout > HttpExecTimeout {

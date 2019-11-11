@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/ouqiang/gocron/internal/modules/utils"
+	"github.com/buzhiyun/gocron/internal/modules/utils"
 )
 
 const PasswordSaltLength = 6
@@ -65,11 +65,20 @@ func (user *User) Enable(id int) (int64, error) {
 
 // 验证用户名和密码
 func (user *User) Match(username, password string) bool {
+
 	where := "(name = ? OR email = ?) AND status =? "
 	_, err := Db.Where(where, username, username, Enabled).Get(user)
 	if err != nil {
 		return false
 	}
+
+	//先通过septent portal 登录
+	ok, portalErr := SeptnetAuth(username, password)
+	if ok && portalErr == nil {
+
+		return true
+	}
+
 	hashPassword := user.encryptPassword(password, user.Salt)
 
 	return hashPassword == user.Password
