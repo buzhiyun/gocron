@@ -52,7 +52,7 @@ func (mail *Mail) send(mailSetting models.Mail, toUsers []string, msg Message) {
 	gomailMessage := gomail.NewMessage()
 	gomailMessage.SetHeader("From", mailSetting.User)
 	gomailMessage.SetHeader("To", toUsers...)
-	gomailMessage.SetHeader("Subject", "七天调度-定时任务通知")
+	gomailMessage.SetHeader("Subject", "cron-定时任务通知")
 	gomailMessage.SetBody("text/html", body)
 	mailer := gomail.NewDialer(mailSetting.Host, mailSetting.Port,
 		mailSetting.User, mailSetting.Password)
